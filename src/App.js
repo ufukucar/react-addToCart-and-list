@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useReducer } from 'react'
+import './App.css'
+import Header from './Components/Header'
+import Products from './Components/Products'
+import { initialState } from './Reducer/initialState'
+import { Reducer } from './Reducer/Reducer'
 function App() {
+  const [state, dispatch] = useReducer(Reducer, initialState)
+  const countArttir = () => {
+    dispatch({ type: 'TOTALARTTIR' })
+  }
+
+  const addToCart = (product) => {
+    // console.log('item: ', item)
+    let payload = {
+      id: product.id,
+      title: product.title,
+      price: product.price,
+      quantity: 1,
+    }
+    dispatch({
+      type: 'ADD_TO_CART',
+      payload,
+    })
+
+    //console.log(state)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Header state={state} />
+      <div className="container-fluid ">
+        <Products countArttir={countArttir} addToCart={addToCart} />
+      </div>
+    </>
+  )
 }
 
-export default App;
+export default App
