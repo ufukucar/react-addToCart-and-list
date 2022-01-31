@@ -1,10 +1,4 @@
 export const Reducer = (state, action) => {
-  let productIndex = state.cart.findIndex((val) => val.id == action.payload.id)
-
-  //console.log('product index: ', productIndex)
-
-  //console.log(action.payload)
-
   switch (action.type) {
     case 'ADD_TO_CART':
       let lastTotal = state.total + 1
@@ -38,8 +32,10 @@ export const Reducer = (state, action) => {
         cart: stateCart,
       }
 
-      console.log('State: ', state)
       return state
+
+    case 'EMPTY_CART':
+      return { total: 0, totalCount: 0, cart: [] }
 
     default:
       return state

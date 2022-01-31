@@ -24,7 +24,7 @@ const Products = ({ countArttir, addToCart }) => {
     <>
       <div className="row mt-3">
         <div className="col-lg-12">
-          <h1 className="text-center mb-5">Products </h1>
+          <h1 className="text-center mb-5">Ürünlerimiz </h1>
         </div>
       </div>
       <div className="row">

@@ -1,6 +1,6 @@
-import React, { useReducer, useEffect } from 'react'
-import { initialState } from '../Reducer/initialState'
-import { Reducer } from '../Reducer/Reducer'
+import React from 'react'
+
+import { Link } from 'react-router-dom'
 
 const Header = ({ state }) => {
   return (
@@ -16,32 +16,34 @@ const Header = ({ state }) => {
       >
         <span className="navbar-toggler-icon"></span>
       </button>
-      <a className="navbar-brand" href="/#">
+      <Link className="navbar-brand" to="/#">
         Keyfimin Şirketi
-      </a>
+      </Link>
 
       <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
           <li className="nav-item active">
-            <a className="nav-link" href="/#">
+            <Link className="nav-link" to="/#">
               Anasayfa <span className="sr-only">(current)</span>
-            </a>
+            </Link>
           </li>
           <li className="nav-item ">
-            <a className="nav-link" href="/#">
-              Sepet{' '}
-              <span className="badge">{state.totalCount.toFixed(2)} $</span>
-            </a>
+            <Link to="/cart" className="nav-link">
+              Sepet Toplamı{' '}
+              <span className="badge badge-secondary">
+                {state.totalCount.toFixed(2)} $
+              </span>
+            </Link>
           </li>
         </ul>
         <div className="d-flex ">
           <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
             <li className="nav-item active">
-              <a className="nav-link" href="/#">
+              <Link className="nav-link" to="/">
                 <i className="fa fa-shopping-cart"></i>
                 &nbsp;
                 <span className="badge badge-light">{state.total}</span>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
